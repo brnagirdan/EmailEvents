@@ -1,0 +1,7 @@
+send email either through a local service provider or a cloud email service.
+
+we build upon greeting web services project adding async process
+
+
+I created a emails service interface named "EmailService". The interface declare three methods.
+
