@@ -1,0 +1,108 @@
+Send email either through a local service provider or a cloud email service.
+
+We build upon greeting web services project adding async process
+
+
+I created a emails service interface named "EmailService". The interface declare three methods. Firt is named "send" and send email synchronously
+and return a value back to the client.
+
+The future interface provides methods which allows asynchronous processes to return a value or exception.
+
+It excellent candidate for our purposes.
+
+If you us jdk8 or low you cannot use completable future interface. We create ".." class to implement our mwthods which defined in our interface.
+
+
+Then within the package, create a new class named "...".
+
+
+A future indicates the status of some objects.
+
+The future has boolean variables to indicate if that task is done or has been cancelled.
+
+Various methods facilitate(fasilitiyd) setting the values of these variables.
+
+
+Complete(kompliyt) exceptionally methods are used by asynchronous task to finalize the future object for initiating thread.
+
+
+
+
+<!-- JMS -->
+
+JMS Api provides vendor independent accesss to to Enterprise Messaging Systems like JBoss Messaging, BEA Weblogic.
+
+Java Messaging service has 2 modules:
+1- Point to Point Queues ( We have one-to-one relationship We have a sender that send messages to a queue and we have many possible 
+receiver but that message only picked up by one receiver.
+
+2-Publish/Subscribe Topics ( it is one-to-many model that publisher sends message to multiple subscribes).It is second model I've mentioned.
+
+JMS Client: Java application using client.
+JMS Provider: Messaging system that handles routing & delivery of messaging.
+JMS Application: Business System composed of many JMS Clients, & usually one JMS Provider.
+Producer: JMS Client that sends a message.
+Consumer: JMS Client that receives a message.
+A JMS Client can be both producer and consumer of messages.
+
+
+
+Message Broker( RabbitMQ ,ActiveMQ): In a publish/subscriber architecture for machine-to-machine communication,
+the message broker decouples communication between devices (puslisher and subscriber) that is an intermediary program
+that translate messages from publisher to subscribers.This means that the publisher dont need to know
+anything about subscribers.It only sends message to broker and broker manages and distributes message.
+
+
+
+
+
+<!--Some useful sentences -->
+
+You can bypass basic setup steps that are already familiar to you.
+The spring boot provides many convenient features.
+We look at how to send a message over jms broker.
+
+It will be identical to the one that boot creates by default.
+We use jackson and serialize the content to json in text format.
+
+
+/*   
+https://spring.io/guides/gs/messaging-jms/
+
+http://www.baeldung.com/spring-jms
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
