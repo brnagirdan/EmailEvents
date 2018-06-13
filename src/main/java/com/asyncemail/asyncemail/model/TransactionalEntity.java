@@ -1,20 +1,23 @@
 package com.asyncemail.asyncemail.model;
 
+import com.asyncemail.asyncemail.util.RequestContext;
 import org.joda.time.DateTime;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
 
-
-
-@MappedSuperclass    // has no separate table defined for it
+/**
+ * The parent class for all transactional persistent entities.
+ *
+ * @see ReferenceEntity
+ *
+ * @author Berna
+ */
+@MappedSuperclass
 public class TransactionalEntity implements Serializable {
     /*
      * The default serial version UID
@@ -64,7 +67,7 @@ public class TransactionalEntity implements Serializable {
     /**
      * The timestamp when this entity instance was most recemtly updated
      **/
-    private DateTime upadatedAt;
+    private DateTime updatedAt;
 
     public Long getId() {
         return id;
@@ -115,12 +118,61 @@ public class TransactionalEntity implements Serializable {
     }
 
     public DateTime getUpadatedAt() {
-        return upadatedAt;
+        return updatedAt;
     }
 
-    public void setUpadatedAt(DateTime upadatedAt) {
-        this.upadatedAt = upadatedAt;
+    public void setUpdatedAt(DateTime upadatedAt) {
+        this.updatedAt = upadatedAt;
     }
+
+
+    /**
+     * A listener method which is invoked on instances of TransactionalEntity
+     *(or their subclasses) prior to initial persistence. Sets the
+     * <code>created</code> audit values for the entity. Attemps to obtain this
+     * thread's instance of a username from the RequestContext. If none exists,
+     * throws an IllegalArgumentException. The username is used to set the
+     * <code>createdBy</code> value. The <code>createdAt</code> value is set to
+     * the current timestamp.
+     */
+    @PrePersist
+    public void beforePersist(){
+        String username= RequestContext.getUsername();
+        if(username== null){
+            throw new IllegalArgumentException(
+                    "Cannot persist a TransactionalEntity without a username"
+                    + "in the RequestContext for this thread.");
+        }
+
+        setCreatedBy(username);
+        setCreatedAt(new DateTime());
+    }
+
+
+    /**
+     * A listener method which is invoked on instances of TransactionalEntity
+     * (or their subclasses) prior to being updated. Sets the
+     * <code>updated</code> audit values for the entity. Attempts to obtain this
+     * thread's instance of username from the RequestContext. If none exists,
+     * throws an IllegalArgumentException. The username is used to set the
+     * <code>updatedBy</code> value. The <code>updatedAt</code> value is set to
+     * the current timestamp.
+     */
+    @PreUpdate
+    public void beforeUpdate() {
+        String username = RequestContext.getUsername();
+        if (username == null) {
+            throw new IllegalArgumentException(
+                    "Cannot update a TransactionalEntity without a username "
+                            + "in the RequestContext for this thread.");
+        }
+        setUpdatedBy(username);
+
+        setUpdatedAt(new DateTime());
+    }
+
+
+
 
     /**
      *Determines the equality of two Transactional objects. If the
