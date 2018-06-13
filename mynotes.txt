@@ -66,6 +66,13 @@ It will be identical to the one that boot creates by default.
 We use jackson and serialize the content to json in text format.
 
 
+
+Spring’s JmsTemplate can receive messages directly through its receive method,
+ but that only works synchronously, meaning it will block.
+ That’s why we recommend that you use a listener container such as DefaultMessageListenerContainer
+ with a cache-based connection factory, so you can consume messages asynchronously and with maximum connection efficiency.
+
+
 /*   
 https://spring.io/guides/gs/messaging-jms/
 
