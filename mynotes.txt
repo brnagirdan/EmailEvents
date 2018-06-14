@@ -34,7 +34,7 @@ JMS Api provides vendor independent accesss to to Enterprise Messaging Systems l
 
 Java Messaging service has 2 modules:
 1- Point to Point Queues ( We have one-to-one relationship We have a sender that send messages to a queue and we have many possible 
-receiver but that message only picked up by one receiver.
+receiver but that message only picked up by one receiver.  Really?
 
 2-Publish/Subscribe Topics ( it is one-to-many model that publisher sends message to multiple subscribes).It is second model I've mentioned.
 
@@ -65,12 +65,31 @@ We look at how to send a message over jms broker.
 It will be identical to the one that boot creates by default.
 We use jackson and serialize the content to json in text format.
 
+it gets evenly distributed with some caveats to each consumer
+
 
 
 Spring’s JmsTemplate can receive messages directly through its receive method,
  but that only works synchronously, meaning it will block.
  That’s why we recommend that you use a listener container such as DefaultMessageListenerContainer
- with a cache-based connection factory, so you can consume messages asynchronously and with maximum connection efficiency.
+ with a cache-based connection factory, so you can consume messages asynchronously and with maximum 
+ connection efficiency.
+ 
+ This makes it easy to ship, version, and deploy the service as an application.
+ 
+ The WAR Plugin is responsible for collecting all artifact dependencies, classes and resources of the web application and packaging them into a web application archive
+ 
+ I am going to talk about ....
+ 
+ Message is not broadcasted.
+ 
+ So, here is an example of....
+ 
+ All consumers will get the exact same copy of that message.
+ It will pick first one which attaches.
+ If consumer get close down or dies another consumer will get used to be exclusive consumer.
+ get disconnected from message broker.
+ 
 
 
 /*   
@@ -78,13 +97,19 @@ https://spring.io/guides/gs/messaging-jms/
 
 http://www.baeldung.com/spring-jms
 
+https://www.youtube.com/watch?v=s-E_V5Xyg6k
+
 */
+ depreciated (depreşietid)
+ 
+ corrupted
+ 
+ take a long time
 
 
 
 
-
-
+Round robin : processlerin çalışma durumuyla ilgili
 
 
 
