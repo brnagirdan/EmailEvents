@@ -105,7 +105,10 @@ https://www.youtube.com/watch?v=s-E_V5Xyg6k
  corrupted
  
  take a long time
+ 
+ error-prone process
 
+ can be deployed on-premise on local laptop on a cloud environment
 
 
 
