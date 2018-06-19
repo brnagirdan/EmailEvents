@@ -72,7 +72,6 @@
 			<artifactId>joda-time</artifactId>
 		</dependency>
 
-
 	</dependencies>
 
 	<build>
