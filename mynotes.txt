@@ -116,6 +116,46 @@ Round robin : processlerin çalışma durumuyla ilgili
 
 
 
+send email either through a local service provider or a cloud email service.
+
+we build upon greeting web services project adding async process
+
+
+I created a emails service interface named "EmailService". The interface declare three methods.
+
+The actor model is a conceptual model to deal with concurrent computation.
+It defines some general rules for how the system’s components should behave and interact with each other.
+The idea is very similar to what we have in object-oriented languages.
+An object receives a message (a method call) and does something depending on which message it receives (which method we are calling)
+The main difference is that actors are completely isolated from each other and they will never share memory.
+Try to put it in a consistent state again.
+Another interesting aspect of the actor model is that it doesn’t matter
+if the actor that I’m sending a message to is running locally or in another node.
+This allows us to create systems that leverage multiple computers and helps us to recover if one of them fail.
+
+It’s very often we will want to integrate Akka with an existing Spring-based application or simply use Spring for wiring beans into actors.
+Actors have a specific lifecycle that differs from typical Spring bean lifecycle
+To demonstrate injection of a service into an actor, we’ll create a simple class GreetingActor defined as an untyped actor.
+
+
+volatile(volidil)
+
+blueprint(taslak)
+
+To test that everything works correctly, we may inject the ActorSystem instance into our code.
+
+Adding Spring Support via Akka Extension.
+
+I'm in charge to analyse.
+A Future gives you a simple way to run an algorithm concurrently
+
+
+<!-- Debug https://www.youtube.com/watch?v=1bCgzjatcr4 -->
+
+if product is shiped sen message back to the client 
+
+
+
 
 
 

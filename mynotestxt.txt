@@ -33,3 +33,7 @@ A Future gives you a simple way to run an algorithm concurrently
 
 
 <!-- Debug https://www.youtube.com/watch?v=1bCgzjatcr4 -->
+
+if product is shiped sen message back to the client.
+
+We communicate with actors through messages.
